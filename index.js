@@ -1,10 +1,10 @@
-require('dotenv').config(); // Load environment variables from .env
+require('dotenv').config();
 const express = require('express');
 const axios = require('axios');
 const app = express();
 const port = process.env.PORT || 5000;
 
-// Zerodha API credentials (loaded from .env)
+// Load environment variables
 const KITE_API_KEY = process.env.KITE_API_KEY;
 const KITE_SECRET = process.env.KITE_SECRET;
 const REDIRECT_URL = process.env.REDIRECT_URL;
@@ -27,7 +27,7 @@ app.get('/callback', async (req, res) => {
         // Step 3: Exchange request_token for access_token
         const response = await axios.post(
             'https://api.kite.trade/session/token',
-            null, // No request body
+            null,
             {
                 params: {
                     api_key: KITE_API_KEY,
